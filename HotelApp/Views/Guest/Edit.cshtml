@@ -1,0 +1,102 @@
+﻿@model GuestEditViewModel
+@{
+    ViewBag.Title = "Edit Booking";
+}
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index"> Home </a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index"> All Bookings </a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Booking </li>
+                </ol>
+            </nav> <br /><br />
+            <form method="post" enctype="multipart/form-data" asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label asp-for="FromDate"> Arrival Date</label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input asp-for="FromDate" class="form-control" />
+                        <span asp-validation-for="FromDate" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-2">
+                        <label asp-for="ToDate"> Departure Date</label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input asp-for="ToDate" class="form-control" />
+                        <span asp-validation-for="ToDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label asp-for="RoomType"> Room Type </label>
+                    </div>
+                    <div class="form-check col-md-3">
+                        <select class="form-control" asp-for="RoomType">
+                            <option> Single King </option>
+                            <option> Double Queen </option>
+                            <option> Executive Suite </option>
+                        </select>
+                        <span asp-validation-for="RoomType" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-2">
+                        <label asp-for="MobileNo">Mobile Number</label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input asp-for="MobileNo" class="form-control" placeholder="Enter without +91" />
+                        <span asp-validation-for="MobileNo" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label asp-for="FirstName"></label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input asp-for="FirstName" class="form-control" placeholder="Enter First Name.." readonly style="background-color:#293043" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-2">
+                        <label asp-for="LastName"></label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input asp-for="LastName" class="form-control" placeholder="Enter Last Name.." readonly style="background-color:#293043" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label asp-for="Email"></label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-2">
+                        <label asp-for="Address"></label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input asp-for="Address" class="form-control" placeholder="Enter Full Address.." />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                </div><br />
+                <div class="form-group">
+                    <button type="submit" class="btn btn-rounded btn-primary float-right"><i class="fas fa-plus-square" style="margin-right: 0.7em"></i> Update </button>
+                    <a asp-action="index" class="btn btn-rounded btn-success float-left"><i class="fas fa-caret-square-left" style="margin-right: 0.7em"></i> Back </a>
+                    <br /><br /><br />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

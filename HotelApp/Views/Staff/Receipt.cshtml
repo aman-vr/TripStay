@@ -1,0 +1,66 @@
+﻿@model GuestDetailViewModel
+
+@{ ViewBag.Title = "Receipt";}
+
+@{ Layout = null;}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <div class="container-fluid d-flex justify-content-between">
+                    <div class="col-md-3 pl-0">
+                        <p class="mt-5 mb-2"><b>Hotel App Ltd</b></p>
+                        <p>Viktor Valley<br /> New Delhi<br />110007</p>
+                    </div>
+                    <div class="col-md-3 pr-0">
+                        <p class="mt-5 mb-2 text-right"><b>Date: @DateTime.UtcNow.Date.ToString("dd-MMM-yyyy")</b></p>
+                        <p class="text-right">Tax Code: 2264C <br />Year: 2021/2022<br />HMRC</p>
+                    </div>
+                </div><br /><br />
+
+                <div class="col-md-12 row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"><h5>Guest's Name : @Model.FirstName @Model.LastName</h5></div>
+                    <div class="col-md-4"><h5>Mobile Number : @Model.MobileNo</h5></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 table-responsive-md">
+                    <table class="table table-striped">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Room Type</th>
+                                <th>Arrival Date</th>
+                                <th>Departure Date</th>
+                                <th>Email</th>
+                                <th>Charges Per Day</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.RoomType</td>
+                                <td>@Model.FromDate.ToString("dd-MMM-yyyy")</td>
+                                <td>@Model.ToDate.ToString("dd-MMM-yyyy")</td>
+                                <td>@Model.Email</td>
+                                <td>@Model.PerDayCharges.ToString("C")</td>
+                            </tr>
+                        </tbody>
+                        <br />
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="table-dark"><b>TOTAL CHARGES :</b></td>
+                                <td class="table-dark">@Model.TotalCharges.ToString("C")</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HotelApp.Entity\HotelApp.Entity.csproj" />
+    <ProjectReference Include="..\HotelApp.Persistence\HotelApp.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

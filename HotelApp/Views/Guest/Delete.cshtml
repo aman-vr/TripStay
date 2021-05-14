@@ -1,0 +1,25 @@
+﻿@model GuestDeleteViewModel
+@{
+    ViewBag.Title = "Cancel Booking";
+}
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index"> Home </a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index"> All Bookings </a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Cancel Booking </li>
+                </ol>
+            </nav> <br /><br />
+            <h2 style="color:red"> Are you sure you want to cancel this booking? </h2><br /><br />
+            <form method="post" enctype="multipart/form-data" asp-action="Delete">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-rounded btn-primary float-left"><i class="fas fa-plus-square" style="margin-right: 0.7em"></i> Cancel Booking </button>
+                    <a asp-action="index" class="btn btn-rounded btn-success float-right"><i class="fas fa-caret-square-left" style="margin-right: 0.7em"></i> Go Back </a>
+                    <br /><br /><br />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

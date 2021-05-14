@@ -1,0 +1,82 @@
+﻿@model BookingListPagination<GuestIndexViewModel>
+@{
+    ViewBag.Title = "Staff";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index"> Home </a></li>
+                        <li class="breadcrumb-item active" aria-current="page"> Upcoming Bookings </li>
+                    </ol>
+                </nav><br /><br />
+                <div class="row">
+                    <div class="col-md-12 table-responsive-md">
+                        <a class="btn btn-xs btn-outline-success float-md-right" asp-action="Old"> Old Bookings</a>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th> Name </th>
+                                    <th> Mobile No </th>
+                                    <th> Room Type </th>
+                                    <th> Arrival </th>
+                                    <th> Departure </th>
+                                    <th> Total Charges </th>
+                                    <th class="text-warning" style="text-align:center"> Actions </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                   
+                                        <tr>
+                                            <td>
+                                                <a asp-action="Detail" asp-route-id="@item.Id">
+                                                    @item.FirstName @item.LastName
+                                                </a>
+                                            </td>
+                                            <td>@item.MobileNo</td>
+                                            <td>@item.RoomType</td>
+                                            <td>@item.FromDate.ToString("dd-MMM-yyyy")</td>
+                                            <td>@item.ToDate.ToString("dd-MMM-yyyy")</td>
+                                            <td>@item.TotalCharges.ToString("C")</td>
+
+                                            <td>
+                                                <a class="text-primary" asp-action="Receipt" asp-route-id="@item.Id">
+                                                    <i class="fas fa-bars"></i> Preview Receipt
+                                                </a>
+
+                                                <a class="text-success" asp-action="PrintReceipt" asp-route-id="@item.Id" style="margin-left:7px">
+                                                    <i class="far fa-file-pdf"></i> Receipt Pdf
+                                                </a>
+                                            </td>
+                                        </tr>
+                                }
+                            </tbody>
+                        </table><br />
+
+                        @{
+                            var disablePrevious = !Model.IsPreviousPageAvailable ? "disabled" : "";
+                            var disableNext = !Model.IsNextPageAvailable ? "disabled" : "";
+                        }
+
+                        <a asp-action="Index"
+                           asp-route-pageNumber="@(Model.PageIndex - 1)"
+                           class="btn btn-primary @disablePrevious">
+                            Previous
+                        </a>
+                        <a asp-action="Index"
+                           asp-route-pageNumber="@(Model.PageIndex + 1)"
+                           class="btn btn-primary @disableNext">
+                            Next
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
